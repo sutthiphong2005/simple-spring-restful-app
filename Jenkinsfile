@@ -24,7 +24,7 @@ pipeline {
         stage('Build image') {
             steps {
                 script {
-                    dockerImage = docker.build("phayao/my-app")
+                    dockerImage = docker.build("sutthiphong2005/my-app")
                 }
             }
         }
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(
-                        credentialsId: 'docker-credential',
+                        credentialsId: 'dockerhub-credentials',
                         url: 'https://index.docker.io/v1/') {
                         dockerImage.push()
                     }
